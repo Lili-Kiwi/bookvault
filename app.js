@@ -9,6 +9,8 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
+const passport = require("passport");
+require("./config/passport");
 
 const connectDB = require("./db/connect");
 
@@ -29,11 +31,13 @@ app.use(
     })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 app.use(methodOverride("_method"));
 
 app.use((req, res, next) => {
-    res.locals.currentUser = req.session.user || null;
+    res.locals.currentUser = req.user || null;
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();
