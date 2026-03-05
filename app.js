@@ -13,6 +13,7 @@ const passport = require("passport");
 require("./config/passport");
 
 const connectDB = require("./db/connect");
+const authRouter = require("./routes/auth");
 
 app.set("view engine", "ejs");
 
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.use(authRouter);
 
 app.use((req, res) => {
     res.status(404).render("404", { url: req.url });
