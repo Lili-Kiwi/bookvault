@@ -14,6 +14,7 @@ require("./config/passport");
 
 const connectDB = require("./db/connect");
 const authRouter = require("./routes/auth");
+const booksRouter = require("./routes/books");
 
 app.set("view engine", "ejs");
 
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 
 // routes
 app.use(authRouter);
+app.use("/books", booksRouter);
 
 app.use((req, res) => {
     res.status(404).render("404", { url: req.url });
