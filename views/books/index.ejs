@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>My Books</title></head>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+
+  <h1>My Books</h1>
+  <a href="/books/new">+ Add a book</a>
+
+  <% if (books.length === 0) { %>
+    <p>You haven't added any books yet.</p>
+  <% } else { %>
+    <ul>
+      <% books.forEach(function(book) { %>
+        <li>
+          <a href="/books/<%= book._id %>"><%= book.title %></a>
+          by <%= book.author %> — <%= book.status %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</body>
+</html>

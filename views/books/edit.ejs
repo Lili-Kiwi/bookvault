@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Book</title></head>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+
+  <h1>Edit Book</h1>
+  <form action="/books/<%= book._id %>?_method=PUT" method="POST">
+    <p>
+      <label>Title *</label><br>
+      <input type="text" name="title" value="<%= book.title %>">
+    </p>
+    <p>
+      <label>Author *</label><br>
+      <input type="text" name="author" value="<%= book.author %>">
+    </p>
+    <p>
+      <label>Genre</label><br>
+      <input type="text" name="genre" value="<%= book.genre || '' %>">
+    </p>
+    <p>
+      <label>Description</label><br>
+      <textarea name="description"><%= book.description || '' %></textarea>
+    </p>
+    <p>
+      <label>Status</label><br>
+      <select name="status">
+        <option value="wishlist" <%= book.status === 'wishlist' ? 'selected' : '' %>>Wishlist</option>
+        <option value="reading" <%= book.status === 'reading' ? 'selected' : '' %>>Reading</option>
+        <option value="completed" <%= book.status === 'completed' ? 'selected' : '' %>>Completed</option>
+      </select>
+    </p>
+    <p>
+      <label>Rating (1-5)</label><br>
+      <input type="number" name="rating" min="1" max="5" value="<%= book.rating || '' %>">
+    </p>
+    <p>
+      <label>Pages</label><br>
+      <input type="number" name="pages" min="1" value="<%= book.pages || '' %>">
+    </p>
+    <p>
+      <label>Date Started</label><br>
+      <input type="date" name="dateStarted" value="<%= book.dateStarted ? book.dateStarted.toISOString().split('T')[0] : '' %>">
+    </p>
+    <p>
+      <label>Date Completed</label><br>
+      <input type="date" name="dateCompleted" value="<%= book.dateCompleted ? book.dateCompleted.toISOString().split('T')[0] : '' %>">
+    </p>
+    <p>
+      <label><input type="checkbox" name="isFavorite" value="true" <%= book.isFavorite ? 'checked' : '' %>> Favorite</label>
+    </p>
+    <button type="submit">Save Changes</button>
+  </form>
+  <p><a href="/books/<%= book._id %>">Cancel</a></p>
+</body>
+</html>

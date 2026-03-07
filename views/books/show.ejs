@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title><%= book.title %></title></head>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+
+  <h1><%= book.title %></h1>
+  <p><strong>Author:</strong> <%= book.author %></p>
+  <% if (book.genre) { %><p><strong>Genre:</strong> <%= book.genre %></p><% } %>
+  <% if (book.description) { %><p><strong>Description:</strong> <%= book.description %></p><% } %>
+  <p><strong>Status:</strong> <%= book.status %></p>
+  <% if (book.rating) { %><p><strong>Rating:</strong> <%= book.rating %> / 5</p><% } %>
+  <% if (book.pages) { %><p><strong>Pages:</strong> <%= book.pages %></p><% } %>
+  <% if (book.dateStarted) { %><p><strong>Started:</strong> <%= book.dateStarted.toDateString() %></p><% } %>
+  <% if (book.dateCompleted) { %><p><strong>Completed:</strong> <%= book.dateCompleted.toDateString() %></p><% } %>
+  <p><strong>Favorite:</strong> <%= book.isFavorite ? 'Yes' : 'No' %></p>
+
+  <p>
+    <a href="/books/<%= book._id %>/edit">Edit</a>
+    &nbsp;
+    <form action="/books/<%= book._id %>?_method=DELETE" method="POST" style="display:inline">
+      <button type="submit" onclick="return confirm('Delete this book?')">Delete</button>
+    </form>
+  </p>
+  <p><a href="/books">Back to my books</a></p>
+</body>
+</html>

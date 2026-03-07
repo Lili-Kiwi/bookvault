@@ -46,6 +46,7 @@ app.use((req, res, next) => {
 });
 
 // routes
+app.get("/", (req, res) => res.render("index"));
 app.use(authRouter);
 app.use("/books", booksRouter);
 
