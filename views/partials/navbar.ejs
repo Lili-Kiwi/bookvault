@@ -2,9 +2,11 @@
   <a href="/">BookVault</a> |
   <% if (currentUser) { %>
     <a href="/books">My Books</a> |
-    <a href="/books/new">Add Book</a> |
-    <span><%= currentUser.username %></span> |
-    <a href="/logout">Logout</a>
+    <a href="/books/new">Add Book</a>
+    <span>
+      <span><%= currentUser.username %></span> |
+      <a href="/logout">Logout</a>
+    </span>
   <% } else { %>
     <a href="/login">Login</a> |
     <a href="/register">Register</a>
