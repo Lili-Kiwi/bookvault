@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/style.css"><title>BookVault</title></head>
+<body>
+  <%- include('partials/navbar') %>
+  <%- include('partials/flash') %>
+
+  <h1>BookVault</h1>
+  <p>Your personal book collection manager.</p>
+  <% if (currentUser) { %>
+    <p><a href="/books">Go to my books</a></p>
+  <% } else { %>
+    <p><a href="/register">Register</a> or <a href="/login">log in</a> to get started.</p>
+  <% } %>
+</body>
+</html>
