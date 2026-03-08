@@ -20,12 +20,17 @@ const postRegister = async (req, res) => {
 };
 
 const getLogin = (req, res) => {
+    if (req.user) {
+        return res.redirect("/");
+    }
     res.render("login");
 };
 
-const logout = (req, res, next) => {
-    req.logout((err) => {
-        if (err) return next(err);
+const logout = (req, res) => {
+    req.session.destroy(function (err) {
+        if (err) {
+            console.log(err);
+        }
         res.redirect("/login");
     });
 };
