@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/style.css"><title>Add a Book</title></head>
+<body>
+  <%- include('../partials/navbar') %>
+  <%- include('../partials/flash') %>
+
+  <h1>Add a Book</h1>
+  <form action="/books" method="POST">
+    <p>
+      <label>Title *</label><br>
+      <input type="text" name="title">
+    </p>
+    <p>
+      <label>Author *</label><br>
+      <input type="text" name="author">
+    </p>
+    <p>
+      <label>Genre</label><br>
+      <input type="text" name="genre">
+    </p>
+    <p>
+      <label>Description</label><br>
+      <textarea name="description"></textarea>
+    </p>
+    <p>
+      <label>Status</label><br>
+      <select name="status">
+        <option value="wishlist">Wishlist</option>
+        <option value="reading">Reading</option>
+        <option value="completed">Completed</option>
+      </select>
+    </p>
+    <p>
+      <label>Rating (1-5)</label><br>
+      <input type="number" name="rating" min="1" max="5">
+    </p>
+    <p>
+      <label>Pages</label><br>
+      <input type="number" name="pages" min="1">
+    </p>
+    <p>
+      <label>Date Started</label><br>
+      <input type="date" name="dateStarted">
+    </p>
+    <p>
+      <label>Date Completed</label><br>
+      <input type="date" name="dateCompleted">
+    </p>
+    <p>
+      <label><input type="checkbox" name="isFavorite" value="true"> Favorite</label>
+    </p>
+    <button type="submit">Add Book</button>
+  </form>
+  <p><a href="/books">Cancel</a></p>
+</body>
+</html>
